@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DG Clock</title>
+<style>
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: Verdana, sans-serif;
+	 background-color: #009688;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92vh;
+   
+}
+
+.box{
+    text-align: center;
+}
+
+.hours, .minutes, .seconds, .zone{
+    width: 3vw;
+    height: 4vh;
+    background-color: #009688;
+    padding: 1em;
+    margin: 1em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+	border:1px white solid;
+ 
+}
+@media screen and (max-width: 600px) {
+  .hours, .minutes, .seconds, .zone{
+     width: 3vw !important;
+	 font-size: 1em !important;
+	  padding: 1.5em;
+  }
+}
+
+#hours, #minutes, #seconds, #zone{
+    font-size: 2em;
+    color: white;
+}
+
+.box > h1{
+    font-size: 1em;
+    color: white;
+}
+.heading {
+        width:100% ; 
+		text-align: center;
+		font-size: 1em;
+        color: white;
+	    margin: 1em;
+}
+</style>
+</head>
+<body>
+
+   <div class="heading"><h1> DG Clock </h1></div>
+    <div class="container">
+			
+			
+            <div class="box">
+                <div class="hours">
+                    <h1 id="hours">8</h1>
+                </div>
+               
+            </div>
+
+
+            <div class="box">
+                <div class="minutes">
+                    <h1 id="minutes">8</h1>
+                </div>
+               
+            </div>
+
+
+            <div class="box">
+                <div class="seconds">
+                    <h1 id="seconds">8</h1>
+                </div>
+               
+            </div>
+
+            <div class="box">
+                <div class="zone">
+                    <h1 id="zone">8</h1>
+                </div>
+            </div>
+
+           
+
+    </div>
+
+    <script>
+
+let digitalClock = () => {
+
+    let date = new Date();
+
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    let zone = 'AM';
+	
+	if(hours == 0){
+	  hours = 12
+	}
+	if(hours > 12){
+	  hours = hours -12 ;
+	  zone = 'PM';
+	}
+    hours = hours < 10 ? '0'+hours : hours ;
+	minutes = minutes < 10 ? '0'+minutes : minutes ;
+	seconds = seconds < 10 ? '0'+seconds : seconds ;
+
+
+
+
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+    document.getElementById("zone").innerHTML = zone;
+
+    setTimeout(digitalClock, 1000);
+
+} 
+
+digitalClock();
+</script>
+
+
+</body>
+</html>
